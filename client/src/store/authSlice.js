@@ -1,51 +1,51 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-	showDialog: false,
-	user: {},
-	isLogin: false,
-	showForgetDialog: false,
-	showRestDialog: true,
-	showUpdateProfile: false,
-	showUpdatePassword: false,
+  showDialog: false,
+  user: {},
+  isLogin: false,
+  showForgetDialog: false,
+  showRestDialog: true,
+  showUpdateProfile: false,
+  showUpdatePassword: false,
 };
 
 const authSlice = createSlice({
-	name: "authSlice",
-	initialState,
-	reducers: {
-		setDialog: (state, action) => {
-			state.showDialog = action.payload;
-		},
-		setUser: (state, action) => {
-			state.user = action.payload;
-		},
-		setLogin: (state, action) => {
-			state.isLogin = action.payload;
-		},
-		setForgetDialog: (state, action) => {
-			state.showForgetDialog = action.payload;
-		},
-		setRestDialog: (state, action) => {
-			state.showRestDialog = action.payload;
-		},
-		setUpdateProfile: (state, action) => {
-			state.showUpdateProfile = action.payload;
-		},
-		setUpdatePassword: (state, action) => {
-			state.showUpdatePassword = action.payload;
-		},
-	},
+  name: "authSlice",
+  initialState,
+  reducers: {
+    setDialog: (state, action) => {
+      state.showDialog = action.payload;
+    },
+    setUser: (state, action) => {
+      state.user = action.payload;
+    },
+    setLogin: (state, action) => {
+      state.isLogin = action.payload;
+    },
+    setForgetDialog: (state, action) => {
+      state.showForgetDialog = action.payload;
+    },
+    setRestDialog: (state, action) => {
+      state.showRestDialog = action.payload;
+    },
+    setUpdateProfile: (state, action) => {
+      state.showUpdateProfile = action.payload;
+    },
+    setUpdatePassword: (state, action) => {
+      state.showUpdatePassword = action.payload;
+    },
+  },
 });
 
 export const {
-	setDialog,
-	setLogin,
-	setUser,
-	setForgetDialog,
-	setRestDialog,
-	setUpdatePassword,
-	setUpdateProfile,
+  setDialog,
+  setLogin,
+  setUser,
+  setForgetDialog,
+  setRestDialog,
+  setUpdatePassword,
+  setUpdateProfile,
 } = authSlice.actions;
 
 export const getDialog = (store) => store.authSlice.showDialog;

@@ -1,8 +1,4 @@
-// admin
-export { default as Customers } from "./admin/Customers";
-export { default as Dashboard } from "./admin/Dashboard";
-export { default as CreateProduct } from "./admin/product/CreateProduct";
-export { default as Settings } from "./admin/Settings";
+export { default as CreateProduct } from "./product/CreateProduct";
 
 // root
 export { default as AboutUs } from "./AboutUs";
@@ -15,5 +11,3 @@ export { default as WishList } from "./WishList";
 export { default as ContactUs } from "./contact/ContactUs";
 // shope
 export { default as Shope } from "./shope/Shope";
-// cart
-export { default as Cart } from "./cart/Cart";

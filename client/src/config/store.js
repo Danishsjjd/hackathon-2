@@ -6,12 +6,12 @@ import productSlice from "../store/productSlice";
 import cartSlice from "../store/cartSlice";
 
 const store = configureStore({
-	reducer: {
-		themeSlice,
-		authSlice,
-		productSlice,
-		cartSlice,
-	},
+  reducer: {
+    themeSlice,
+    authSlice,
+    productSlice,
+    cartSlice,
+  },
 });
 
 export default store;

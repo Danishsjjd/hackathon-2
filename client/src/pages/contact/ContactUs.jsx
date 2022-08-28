@@ -12,195 +12,198 @@ import MountTransition from "../../utils/MountTransition";
 import useContact from "./useContact";
 
 const ContactUs = () => {
-	const { active, setActive, initialValues, validationSchema } = useContact();
+  const { active, setActive, initialValues, validationSchema } = useContact();
 
-	return (
-		<MountTransition>
-			<div className="mt-20 space-y-4">
-				<div>
-					<Formik
-						initialValues={initialValues}
-						validationSchema={validationSchema}
-					>
-						{({ handleSubmit }) => (
-							<>
-								<div className="grid lg:grid-cols-2 items-center gap-10 max-w-7xl mx-auto px-8">
-									<div className="space-y-3">
-										<h1 className="text-neutral-darkest text-4xl font-bold">
-											Contact Us
-										</h1>
-										<p className="text-neutral-darker">
-											We love to hear from you, so if there’s anything you’d
-											like to ask us, we’re right here and ready to help in
-											every way we can but please check our{" "}
-											<a
-												className="text-blue-400 cursor-pointer font-medium"
-												href="#faqs"
-											>
-												faq
-											</a>{" "}
-											section maybe you find your answer there
-										</p>
-										<div className="sm:grid grid-cols-2 gap-4 space-y-2 sm:space-y-0">
-											<div>
-												<h3 className="sm:mb-2">Your Name</h3>
-												<Input name="name" placeholder="ex: Danish" app />
-											</div>
-											<div>
-												<h3 className="sm:mb-2">Your Email</h3>
-												<Input
-													name="email"
-													placeholder="ex: danish@dev.com"
-													app
-												/>
-											</div>
-											<div>
-												<h3 className="sm:mb-2">Your Phone</h3>
-												<Input
-													name="phone"
-													placeholder="ex: +92011388034"
-													app
-													type="number"
-												/>
-											</div>
-											<div>
-												<h3 className="sm:mb-2">Your Subject</h3>
-												<Input
-													name="subject"
-													placeholder="ex: how to track order"
-													app
-												/>
-											</div>
-											<div className="col-span-2">
-												<h3 className="mb-2">Message:-</h3>
-												<AreaTextField name="message" className={""} app />
-											</div>
-										</div>
-									</div>
-									<div className="divide-y-1 divide-gray-200 text-center lg:text-left">
-										<div className="pb-2">
-											<h3 className="text-neutral-darkest font-bold">
-												WORKING HOURS
-											</h3>
-											<p>Monday – Friday, 9:00am – 5:00pm PST.</p>
-										</div>
-										<div className="space-y-2 py-2">
-											{contactInfo.map(({ Icon, title, link }) => (
-												<a
-													href={link}
-													className="flex gap-2 justify-center lg:justify-start"
-													key={title}
-												>
-													<Icon className="text-secondary-darker" /> {title}
-												</a>
-											))}
-										</div>
-										<div className="space-y-2 py-2">
-											<h3 className="text-neutral-darkest font-bold">
-												JOIN US
-											</h3>
-											<p className="text-neutral-darker">
-												We are happily open new colloboration. You can ask any
-												questions and offer problems by phone, email, Instagram
-												or Facebook.
-											</p>
-											<div className="flex gap-2 text-white justify-center lg:justify-start">
-												<div className="w-8 h-8 rounded-full bg-neutral-grey grid place-items-center">
-													<a
-														href="https://www.facebook.com/danishsjjd"
-														target={"_blank"}
-													>
-														<Facebook />
-													</a>
-												</div>
-												<div className="w-8 h-8 rounded-full bg-neutral-grey grid place-items-center">
-													<Link to={"/"}>
-														<Google />
-													</Link>
-												</div>
-												<div className="w-8 h-8 rounded-full bg-neutral-grey grid place-items-center">
-													<a
-														href="https://twitter.com/Danishsjjd"
-														target={"_blank"}
-													>
-														<Twitter />
-													</a>
-												</div>
-												<div className="w-8 h-8 rounded-full bg-neutral-grey grid place-items-center">
-													<a
-														href="https://www.instagram.com/danishsjjd/"
-														target={"_blank"}
-													>
-														<Instagram />
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="flex justify-center items-center my-3">
-									<Button title={"Submit"} onClick={handleSubmit} app />
-								</div>
-							</>
-						)}
-					</Formik>
-				</div>
-				<div className="max-w-7xl mx-auto scroll-mt-16 px-8" id="faqs">
-					<h1 className="text-4xl font-bold text-neutral-darkest">
-						How Can We Help You?
-					</h1>
-					<p className="text-neutral-darker max-w-2xl">
-						Below are answers to our most commonly asked questions. If you
-						cannot find an answer here, please contact us.
-					</p>
-				</div>
-				<div className="max-w-7xl mx-auto flex gap-6 flex-col px-6 rounded my-4">
-					{faqData.map((data, index) => {
-						return (
-							<div
-								className="cursor-pointer bg-neutral-lightest text-white rounded overflow-hidden w-full"
-								onClick={() =>
-									setActive((pre) => (pre === index ? null : index))
-								}
-								key={index}
-							>
-								<div className="flex justify-between p-4 ">
-									<div
-										className="text-neutral-darker font-medium"
-										data-aos="fade-up"
-									>
-										<span className="text-neutral-darkest font-bold">
-											Question:{" "}
-										</span>
-										{data.que}
-									</div>
-									<div>
-										<MdPlayCircleFilled
-											className={`text-2xl text-neutral-darker transition-all duration-500 ease-linear ${
-												active === index ? "rotate-90" : ""
-											}`}
-										/>
-									</div>
-								</div>
-								<div
-									className={`text-white text-neutral-darkest  h-0 overflow-hidden transition-all duration-500 ease-linear bg-neutral-lightest border-neutral-darker ${
-										active === index
-											? "lg:px-8 bg-neutral-lightest border-t-1 !h-auto"
-											: ""
-									}`}
-								>
-									<p
-										className="mt-4 p-2 pr-10"
-										dangerouslySetInnerHTML={{ __html: data.ans }}
-									/>
-								</div>
-							</div>
-						);
-					})}
-				</div>
-			</div>
-		</MountTransition>
-	);
+  return (
+    <MountTransition>
+      <div className="mt-20 space-y-4">
+        <div>
+          <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+          >
+            {({ handleSubmit }) => (
+              <>
+                <div className="mx-auto grid max-w-7xl items-center gap-10 px-8 lg:grid-cols-2">
+                  <div className="space-y-3">
+                    <h1 className="text-4xl font-bold text-neutral-darkest">
+                      Contact Us
+                    </h1>
+                    <p className="text-neutral-darker">
+                      We love to hear from you, so if there’s anything you’d
+                      like to ask us, we’re right here and ready to help in
+                      every way we can but please check our{" "}
+                      <a
+                        className="cursor-pointer font-medium text-blue-400"
+                        href="#faqs"
+                      >
+                        faq
+                      </a>{" "}
+                      section maybe you find your answer there
+                    </p>
+                    <div className="grid-cols-2 gap-4 space-y-2 sm:grid sm:space-y-0">
+                      <div>
+                        <h3 className="sm:mb-2">Your Name</h3>
+                        <Input name="name" placeholder="ex: Danish" app />
+                      </div>
+                      <div>
+                        <h3 className="sm:mb-2">Your Email</h3>
+                        <Input
+                          name="email"
+                          placeholder="ex: danish@dev.com"
+                          app
+                        />
+                      </div>
+                      <div>
+                        <h3 className="sm:mb-2">Your Phone</h3>
+                        <Input
+                          name="phone"
+                          placeholder="ex: +92011388034"
+                          app
+                          type="number"
+                        />
+                      </div>
+                      <div>
+                        <h3 className="sm:mb-2">Your Subject</h3>
+                        <Input
+                          name="subject"
+                          placeholder="ex: how to track order"
+                          app
+                        />
+                      </div>
+                      <div className="col-span-2">
+                        <h3 className="mb-2">Message:-</h3>
+                        <AreaTextField name="message" className={""} app />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="divide-y-1 divide-gray-200 text-center lg:text-left">
+                    <div className="pb-2">
+                      <h3 className="font-bold text-neutral-darkest">
+                        WORKING HOURS
+                      </h3>
+                      <p>Monday – Friday, 9:00am – 5:00pm PST.</p>
+                    </div>
+                    <div className="space-y-2 py-2">
+                      {contactInfo.map(({ Icon, title, link }) => (
+                        <a
+                          href={link}
+                          className="flex justify-center gap-2 lg:justify-start"
+                          key={title}
+                        >
+                          <Icon className="text-secondary-darker" /> {title}
+                        </a>
+                      ))}
+                    </div>
+                    <div className="space-y-2 py-2">
+                      <h3 className="font-bold text-neutral-darkest">
+                        JOIN US
+                      </h3>
+                      <p className="text-neutral-darker">
+                        We are happily open new colloboration. You can ask any
+                        questions and offer problems by phone, email, Instagram
+                        or Facebook.
+                      </p>
+                      <div className="flex justify-center gap-2 text-white lg:justify-start">
+                        <div className="grid h-8 w-8 place-items-center rounded-full bg-neutral-grey">
+                          <a
+                            href="https://www.facebook.com/danishsjjd"
+                            target={"_blank"}
+                            rel="noreferrer"
+                          >
+                            <Facebook />
+                          </a>
+                        </div>
+                        <div className="grid h-8 w-8 place-items-center rounded-full bg-neutral-grey">
+                          <Link to={"/"}>
+                            <Google />
+                          </Link>
+                        </div>
+                        <div className="grid h-8 w-8 place-items-center rounded-full bg-neutral-grey">
+                          <a
+                            href="https://twitter.com/Danishsjjd"
+                            target={"_blank"}
+                            rel="noreferrer"
+                          >
+                            <Twitter />
+                          </a>
+                        </div>
+                        <div className="grid h-8 w-8 place-items-center rounded-full bg-neutral-grey">
+                          <a
+                            href="https://www.instagram.com/danishsjjd/"
+                            target={"_blank"}
+                            rel="noreferrer"
+                          >
+                            <Instagram />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="my-3 flex items-center justify-center">
+                  <Button title={"Submit"} onClick={handleSubmit} app />
+                </div>
+              </>
+            )}
+          </Formik>
+        </div>
+        <div className="mx-auto max-w-7xl scroll-mt-16 px-8" id="faqs">
+          <h1 className="text-4xl font-bold text-neutral-darkest">
+            How Can We Help You?
+          </h1>
+          <p className="max-w-2xl text-neutral-darker">
+            Below are answers to our most commonly asked questions. If you
+            cannot find an answer here, please contact us.
+          </p>
+        </div>
+        <div className="mx-auto my-4 flex max-w-7xl flex-col gap-6 rounded px-6">
+          {faqData.map((data, index) => {
+            return (
+              <div
+                className="w-full cursor-pointer overflow-hidden rounded bg-neutral-lightest text-white"
+                onClick={() =>
+                  setActive((pre) => (pre === index ? null : index))
+                }
+                key={index}
+              >
+                <div className="flex justify-between p-4 ">
+                  <div
+                    className="font-medium text-neutral-darker"
+                    data-aos="fade-up"
+                  >
+                    <span className="font-bold text-neutral-darkest">
+                      Question:{" "}
+                    </span>
+                    {data.que}
+                  </div>
+                  <div>
+                    <MdPlayCircleFilled
+                      className={`text-2xl text-neutral-darker transition-all duration-500 ease-linear ${
+                        active === index ? "rotate-90" : ""
+                      }`}
+                    />
+                  </div>
+                </div>
+                <div
+                  className={`h-0 overflow-hidden  border-neutral-darker bg-neutral-lightest text-white text-neutral-darkest transition-all duration-500 ease-linear ${
+                    active === index
+                      ? "!h-auto border-t-1 bg-neutral-lightest lg:px-8"
+                      : ""
+                  }`}
+                >
+                  <p
+                    className="mt-4 p-2 pr-10"
+                    dangerouslySetInnerHTML={{ __html: data.ans }}
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </MountTransition>
+  );
 };
 
 export default ContactUs;
