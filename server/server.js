@@ -68,3 +68,5 @@ process.on("unhandledRejection", (err) => {
   });
 });
 connection();
+
+// in future i'll implement winston logger
