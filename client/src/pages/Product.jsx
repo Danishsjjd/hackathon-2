@@ -117,7 +117,6 @@ const Product = () => {
                 <p>
                   <strong>No. Of Living Rooms:- </strong> {product.livingRoom}
                 </p>
-                {console.log(product)}
               </div>
               <div
                 className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border-1 border-gray-400"

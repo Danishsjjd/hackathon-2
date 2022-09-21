@@ -121,7 +121,8 @@ export default function Shope() {
       new Date(startDate) > new Date(product.createdAt)
     )
       return;
-    if (id && !product?.title?.includes(id)) return;
+    if (id && !product?.title?.toLowerCase()?.includes(id?.toLowerCase()))
+      return;
 
     cards.push(
       <Card

@@ -2,7 +2,7 @@ import { AnimatePresence } from "framer-motion";
 import { useEffect, useId } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Routes, useLocation } from "react-router-dom";
-import { Search } from "../components";
+import { PageNotFound, Search } from "../components";
 
 import { Footer, Header } from "../layout";
 import { API } from "../libs/axios";
@@ -72,6 +72,7 @@ const Router = () => {
         </Route>
         <Route path="/blog" element={<Blog />} />
         <Route path="/sale" element={<Sale />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </AnimatePresence>
   );
